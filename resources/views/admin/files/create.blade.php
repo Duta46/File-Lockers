@@ -12,7 +12,7 @@
         <div class="panel-body">
 
             <div class="row">
-                <div class="col-xs-12 form-group">
+                <div class="col-xs-11 form-group">
                     {!! Form::label('folder_id', trans('quickadmin.files.fields.folder').'*', ['class' => 'control-label']) !!}
                     {!! Form::select('folder_id', $folders, old('folder_id'), ['class' => 'form-control select2', 'required' => '']) !!}
                     <p class="help-block"></p>

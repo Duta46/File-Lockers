@@ -37,6 +37,8 @@ return [
 	'files' => [
 		'title' => 'Files',
 		'fields' => [
+			'title' => 'Title',
+			'description' => 'Description',
 			'uuid' => 'Uuid',
 			'folder' => 'Folder',
 			'created-by' => 'Created by',
