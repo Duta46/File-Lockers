@@ -19,10 +19,6 @@
             <span class="icon-bar"></span>
         </a>
 
-        
-
-        
-
     </nav>
 </header>
 

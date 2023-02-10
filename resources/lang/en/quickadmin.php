@@ -71,8 +71,8 @@ return [
 	'qa_sample_question' => 'Sample question',
 	'qa_sample_answer' => 'Sample answer',
 	'qa_faq_management' => 'FAQ Management',
-	'qa_administrator_can_create_other_users' => 'Administrator (can create other users)',
-	'qa_simple_user' => 'Simple user',
+	'qa_administrator_can_create_other_users' => 'Admin',
+	'qa_simple_user' => 'User',
 	'qa_title' => 'Title',
 	'qa_roles' => 'Roles',
 	'qa_role' => 'Role',
@@ -278,5 +278,5 @@ return [
 	'qa_parse_csv' => 'Parse CSV',
 	'qa_import_data' => 'Import data',
 	'qa_imported_rows_to_table' => 'Imported :rows rows to :table table',
-	'quickadmin_title' => 'File Storage',
+	'quickadmin_title' => 'File Lockers',
 ];

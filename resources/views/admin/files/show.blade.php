@@ -14,11 +14,11 @@
                     <table class="table table-bordered table-striped">
                         <tr>
                             <th>@lang('quickadmin.files.fields.folder')</th>
-                            <td field-key='folder'>{{ $file->folder->name or '' }}</td>
+                            <td field-key='folder'>{{ $file->folder->name }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.files.fields.created-by')</th>
-                            <td field-key='created_by'>{{ $file->created_by->name or '' }}</td>
+                            <td field-key='created_by'>{{ $file->created_by->name }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.files.fields.filename')</th>
