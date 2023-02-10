@@ -17,6 +17,14 @@
                             <td field-key='folder'>{{ $file->folder->name }}</td>
                         </tr>
                         <tr>
+                            <th>@lang('quickadmin.files.fields.title')</th>
+                            <td field-key='title'>{{ $file->title->name}}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.files.fields.description')</th>
+                            <td field-key='description'>{{ $file->description->name}}</td>
+                        </tr>
+                        <tr>
                             <th>@lang('quickadmin.files.fields.created-by')</th>
                             <td field-key='created_by'>{{ $file->created_by->name }}</td>
                         </tr>

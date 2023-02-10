@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class Create1516708008FilesTable extends Migration
 {
@@ -15,6 +16,8 @@ class Create1516708008FilesTable extends Migration
         if(! Schema::hasTable('files')) {
             Schema::create('files', function (Blueprint $table) {
                 $table->increments('id');
+                $table->string('title');
+                $table->text('description')->nullable();
                 $table->string('uuid')->nullable();
                 $table->string('filename')->nullable();
                 

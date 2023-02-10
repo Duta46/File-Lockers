@@ -47,6 +47,8 @@
                             <th style="text-align:center;"><input type="checkbox" id="select-all"/></th>@endif
                     @endcan
 
+                    <th>Title</th>
+                    <th>Description</th>
                     <th>Filename</th>
                     <th>Folder</th>
                     @if( request('show_deleted') == 1 )
@@ -66,6 +68,8 @@
                                 @if ( request('show_deleted') != 1 )
                                     <td></td>@endif
                             @endcan
+                            <td field-key='title'>{{ $file->title }}</td>
+                            <td field-key='description'>{{ $file->description }}</td>
                             <td field-key='filename'> @foreach($file->getMedia('filename') as $media)
                                     <p class="form-group">
                                         <a href="{{url('/admin/' . $file->uuid . '/download')}}" target="_blank">{{ $media->name }} ({{ $media->size }} KB)</a>

@@ -93,6 +93,8 @@ class FilesController extends Controller
             foreach ($fileIds as $fileId) {
                 $file = File::create([
                     'id' => $fileId,
+                    'title' => $request->input('title'),
+                    'description' => strip_tags($request->input('description')),
                     'uuid' => (string)\Webpatser\Uuid\Uuid::generate(),
                     'folder_id' => $request->input('folder_id'),
                     'created_by_id' => Auth::getUser()->id

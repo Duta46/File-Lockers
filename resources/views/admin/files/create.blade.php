@@ -10,6 +10,7 @@
         </div>
 
         <div class="panel-body">
+
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('folder_id', trans('quickadmin.files.fields.folder').'*', ['class' => 'control-label']) !!}
@@ -22,6 +23,23 @@
                     @endif
                 </div>
             </div>
+
+             <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('title', trans('quickadmin.files.fields.title').'*', ['class' => 'control-label']) !!}
+                    {!! Form::text('title', old('title'), ['class' => 'form-control', 'placeholder' => 'Enter Title', 'required' => '']) !!}
+                    
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('description', trans('quickadmin.files.fields.description').'*', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('description', old('description'), ['class' => 'summernote', 'rows' => 3, 'required' => '']) !!}
+                    
+                </div>
+            </div>
+        
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('filename', trans('quickadmin.files.fields.filename').'*', ['class' => 'control-label']) !!}
@@ -144,6 +162,10 @@ console.log(totalCount);
                 $parent.remove();
                 return false;
             });
+        });
+
+        $(document).ready(function() {
+            $('#description').summernote();
         });
     </script>
 @stop

@@ -19,7 +19,7 @@ class File extends Model implements HasMedia
 {
     use SoftDeletes, FilterByUser, InteractsWithMedia;
 
-    protected $fillable = ['uuid', 'folder_id', 'created_by_id'];
+    protected $fillable = ['title', 'description', 'uuid', 'folder_id', 'created_by_id'];
     
     
 
