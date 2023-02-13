@@ -12,7 +12,7 @@ return [
      * The maximum file size of an item in bytes. Adding a file
      * that is larger will result in an exception.
      */
-    'max_file_size' => 1024 * 1024 * 10,
+    'max_file_size' => 1024 * 1024 * 1000,
 
     /*
      * This queue will used to generate derived images.
@@ -53,7 +53,7 @@ return [
          * ServerSideEncryption, Metadata, ACL, ContentEncoding
          */
         'extra_headers' => [
-            'CacheControl' => 'max-age=604800',
+            'CacheControl' => 'max-age=1004800',
         ]
     ]
 ];
