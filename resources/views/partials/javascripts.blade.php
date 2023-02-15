@@ -40,9 +40,4 @@
      
 
 </script>
-
- 
-
-
-
 @yield('javascript')
