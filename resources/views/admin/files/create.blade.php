@@ -90,9 +90,9 @@
                 var roleId = Number(Id);
                 console.log(roleId);
 console.log(totalCount);
-                if (totalCount > 5 && roleId == 2) {
-                    alert("your upload limit is 5 files." +
-                            "Upgrade to Premium and upload as many files you want");
+                if (totalCount > 500 && roleId == 2) {
+                    // alert("your upload limit is 5 files." +
+                    //         "Upgrade to Premium and upload as many files you want");
                     $('.file-upload').each(function () {
                         var $this = $(this);
 

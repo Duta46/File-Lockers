@@ -6,7 +6,7 @@
     @can('file_create')
         <p>
 
-            @if (Auth::getUser()->role_id == 2 && $userFilesCount >= 5)
+            @if (Auth::getUser()->role_id == 2 && $userFilesCount >= 500)
                 <a href="{{ route('admin.files.create') }}" class="btn btn-success disabled">@lang('quickadmin.qa_add_new')</a>
                 {{-- <a href="{{url('/admin/subscriptions')}}" class="btn btn-primary">Upgrade plan to Premium for $9.99/month</a> --}}
             @else
