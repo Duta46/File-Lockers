@@ -45,6 +45,16 @@ return [
 			'filename' => 'Filename',
 		],
 	],
+
+	'blogs' =>[
+		'title' => 'Blogs',
+		'fields' => [
+			'title' => 'Title',
+			'description' => 'Description',
+			'folder' => 'Folder',
+			'created-by' => 'Created by',
+		],
+	],
 	'qa_create' => 'Create',
 	'qa_save' => 'Save',
 	'qa_edit' => 'Edit',

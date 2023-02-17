@@ -36,6 +36,7 @@
                         </a>
                     </li>
                 @endcan
+
                 @can('user_access')
                 <li class="{{ $request->segment(2) == 'users' ? 'active active-sub' : '' }}">
                         <a href="{{ route('admin.users.index') }}">
@@ -49,6 +50,7 @@
                 </ul>
             </li>
             @endcan
+
             @can('folder_access')
             <li class="{{ $request->segment(2) == 'folders' ? 'active' : '' }}">
                 <a href="{{ route('admin.folders.index') }}">
@@ -66,6 +68,16 @@
                 </a>
             </li>
             @endcan
+
+            
+            <li class="{{ $request->segment(2) == 'blogs' ? 'active' : '' }}">
+                <a href="{{ route('admin.blogs.index') }}">
+                    <i class="fa fa-blogger"></i>
+                    <span class="title">@lang('quickadmin.blogs.title')</span>
+                </a>
+            </li>
+            
+
 
             {{-- @can('plan_access')
             <li class="{{ $request->segment(2) == 'subscriptions' ? 'active' : '' }}">
