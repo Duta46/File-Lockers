@@ -15,10 +15,10 @@ class Update1519641977RolesTable extends Migration
     {
         Schema::table('roles', function (Blueprint $table) {
             
-if (!Schema::hasColumn('roles', 'price')) {
-                $table->decimal('price', 15, 2)->nullable();
-                }
-if (!Schema::hasColumn('roles', 'stripe_plan_id')) {
+            // if (!Schema::hasColumn('roles', 'price')) {
+            //     $table->decimal('price', 15, 2)->nullable();
+            //     }
+            if (!Schema::hasColumn('roles', 'stripe_plan_id')) {
                 $table->string('stripe_plan_id')->nullable();
                 }
         });

@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePaymentsRequest extends FormRequest
+class UpdateBlogsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,12 +19,12 @@ class UpdatePaymentsRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function rules()
     {
         return [
-            
+            'folder_id' => 'required',
         ];
     }
 }

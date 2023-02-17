@@ -14,12 +14,12 @@ class Update1516709742FilesTable extends Migration
     public function up()
     {
         Schema::table('files', function (Blueprint $table) {
-            if(Schema::hasColumn('files', 'filename')) {
-                $table->dropColumn('filename');
-            }
-            if(Schema::hasColumn('files', 'file')) {
-                $table->dropColumn('file');
-            }
+            // if(Schema::hasColumn('files', 'filename')) {
+            //     $table->dropColumn('filename');
+            // }
+            // if(Schema::hasColumn('files', 'file')) {
+            //     $table->dropColumn('file');
+            // }
             
         });
 
