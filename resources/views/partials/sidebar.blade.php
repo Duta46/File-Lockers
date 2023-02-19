@@ -70,23 +70,25 @@
             @endcan
 
             
+            {{-- @can('file_access')
             <li class="{{ $request->segment(2) == 'blogs' ? 'active' : '' }}">
                 <a href="{{ route('admin.blogs.index') }}">
-                    <i class="fa fa-blogger"></i>
+                    <i class="fa fa-user"></i>
                     <span class="title">@lang('quickadmin.blogs.title')</span>
                 </a>
             </li>
+            @endcan --}}
             
 
 
-            {{-- @can('plan_access')
-            <li class="{{ $request->segment(2) == 'subscriptions' ? 'active' : '' }}">
-                <a href="{{ route('admin.subscriptions.index') }}">
-                    <i class="fa fa-credit-card"></i>
-                    <span class="title">My Plan</span>
+            @can('plan_access')
+            <li class="{{ $request->segment(2) == 'blogs' ? 'active' : '' }}">
+                <a href="{{ route('admin.blogs.index') }}">
+                    <i class="fa-brands fa-blogger-b"></i>
+                    <span class="title">@lang('quickadmin.blogs.title')</span>
                 </a>
             </li>
-            @endcan --}}
+            @endcan
 
 
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">

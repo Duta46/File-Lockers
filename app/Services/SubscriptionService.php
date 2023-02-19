@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 namespace App\Services;
 
@@ -117,4 +117,4 @@ class SubscriptionService
 
         return $subscription;
     }
-}
+} -->

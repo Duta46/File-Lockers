@@ -63,7 +63,7 @@ class FilesController extends Controller
         
         $roleId = Auth::getUser()->role_id;
         $userFilesCount = File::where('created_by_id', Auth::getUser()->id)->count();
-        if ($roleId == 2 && $userFilesCount > 5) {
+        if ($roleId == 2 && $userFilesCount > 500) {
             return redirect('/admin/files');
         }
 
