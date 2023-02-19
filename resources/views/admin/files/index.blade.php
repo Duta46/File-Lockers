@@ -91,19 +91,19 @@
                                     @else
                                     @can('file_delete')
                                         {!! Form::open(array(
-        'style' => 'display: inline-block;',
-        'method' => 'POST',
-        'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-        'route' => ['admin.files.restore', $file->id])) !!}
+                                                                'style' => 'display: inline-block;',
+                                                                'method' => 'POST',
+                                                                'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                                                                'route' => ['admin.files.restore', $file->id])) !!}
                                         {!! Form::submit(trans('quickadmin.qa_restore'), array('class' => 'btn btn-xs btn-success')) !!}
                                         {!! Form::close() !!}
                                     @endcan
                                     @can('file_delete')
                                         {!! Form::open(array(
-        'style' => 'display: inline-block;',
-        'method' => 'DELETE',
-        'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-        'route' => ['admin.files.perma_del', $file->id])) !!}
+                                                    'style' => 'display: inline-block;',
+                                                    'method' => 'DELETE',
+                                                    'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                                                    'route' => ['admin.files.perma_del', $file->id])) !!}
                                         {!! Form::submit(trans('quickadmin.qa_permadel'), array('class' => 'btn btn-xs btn-danger')) !!}
                                         {!! Form::close() !!}
                                     @endcan
@@ -115,10 +115,10 @@
                                     <a href="{{url('/admin/' . $file->uuid . '/download')}}" class="btn btn-xs btn-success">Download</a>
                                     @can('file_delete')
                                         {!! Form::open(array(
-                                                                                'style' => 'display: inline-block;',
-                                                                                'method' => 'DELETE',
-                                                                                'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-                                                                                'route' => ['admin.files.destroy', $file->id])) !!}
+                                                                'style' => 'display: inline-block;',
+                                                                'method' => 'DELETE',
+                                                                'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                                                                'route' => ['admin.files.destroy', $file->id])) !!}
                                         {!! Form::submit(trans('quickadmin.qa_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                         {!! Form::close() !!}
                                     @endcan

@@ -18,54 +18,61 @@
         </p>
     @endcan
 
-    @can('blog_delete')
-    <p>
-    <ul class="list-inline">
-        <li><a href="{{ route('admin.blogs.index') }}" style="{{ request('show_deleted') == 1 ? '' : 'font-weight: 700' }}">@lang('quickadmin.qa_all')</a></li>
-        |
-        <li><a href="{{ route('admin.blogs.index') }}?show_deleted=1" style="{{ request('show_deleted') == 1 ? 'font-weight: 700' : '' }}">@lang('quickadmin.qa_trash')</a></li>
-    </ul>
-    </p>
-@endcan
+    @can('file_delete')
+        <p>
+        <ul class="list-inline">
+            <li><a href="{{ route('admin.blogs.index') }}" style="{{ request('show_deleted') == 1 ? '' : 'font-weight: 700' }}">@lang('quickadmin.qa_all')</a></li>
+            |
+            <li><a href="{{ route('admin.blogs.index') }}?show_deleted=1" style="{{ request('show_deleted') == 1 ? 'font-weight: 700' : '' }}">@lang('quickadmin.qa_trash')</a></li>
+        </ul>
+        </p>
+    @endcan
 
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        @lang('quickadmin.qa_list')
-    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @lang('quickadmin.qa_list')
+        </div>
 
-    <div class="panel-body table-responsive">
-        <table id="myTable" class="table table-bordered table-striped {{ count($blogs) > 0 ? 'datatable' : '' }} @can('blog_delete') @if ( request('show_deleted') != 1 ) dt-select @endif @endcan">
-            <thead>
-            <tr>
-                @can('blog_delete')
-                    @if ( request('show_deleted') != 1 )
-                        <th style="text-align:center;"><input type="checkbox" id="select-all"/></th>@endif
-                @endcan
+        <div class="panel-body table-responsive">
+            <table class="table table-bordered table-striped {{ count($blogs) > 0 ? 'datatable' : '' }} @can('file_delete') @if ( request('show_deleted') != 1 ) dt-select @endif @endcan">
+                <thead>
+                <tr>
+                    @can('file_delete')
+                        @if ( request('show_deleted') != 1 )
+                            <th style="text-align:center;"><input type="checkbox" id="select-all"/></th>@endif
+                    @endcan
 
-                <th>@lang('quickadmin.blogs.fields.name')</th>
-                @if( request('show_deleted') == 1 )
-                    <th>&nbsp;</th>
-                @else
-                    <th>&nbsp;</th>
-                @endif
-            </tr>
-            </thead>
+                    <th>Title</th>
+                    <th>Description</th>
+                    {{-- <th>Filename</th> --}}
+                    <th>Folder</th>
+                    @if( request('show_deleted') == 1 )
+                        <th>&nbsp;</th>
+                    @else
+                        <th>&nbsp;</th>
+                    @endif
+                </tr>
+                </thead>
 
-            <tbody>
-            @if (count($blogs) > 0)
-                @foreach ($blogs as $blog)
-                    <tr data-entry-id="{{ $blog->id }}">
-                        @can('blog_delete')
-                            @if ( request('show_deleted') != 1 )
-                                <td></td>@endif
-                        @endcan
+                <tbody>
 
-                        <td field-key='name'>
-                            @can('blog_view')
-                                <a href="{{ route('admin.blogs.show',[$blog->id]) }}">{{$blog->name}}</a></td>
-                        @endcan
-                        @if( request('show_deleted') == 1 )
+                @if (count($blogs) > 0)
+                    @foreach ($blogs as $blog)
+                        <tr data-entry-id="{{ $blog->id }}">
+                            @can('blog_delete')
+                                @if ( request('show_deleted') != 1 )
+                                    <td></td>@endif
+                            @endcan
+                            <td field-key='title'>{{ $blog->title }}</td>
+                            <td field-key='description'>{{ $blog->description }}</td>
+                            {{-- <td field-key='filename'> @foreach($file->getMedia('filename') as $media)
+                                    <p class="form-group">
+                                        <a href="{{url('/admin/' . $file->uuid . '/download')}}" target="_blank">{{ $media->name }} ({{ $media->size }} KB)</a>
+                                    </p>
+                                @endforeach</td> --}}
+                            <td field-key='folder'>{{ $blog->folder->name }}</td>
+                            @if( request('show_deleted') == 1 )
                             <td>
                                 @can('blog_delete')
                                     {!! Form::open(array(
@@ -106,7 +113,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td colspan="7">@lang('quickadmin.qa_no_entries_in_table')</td>
+                    <td colspan="9">@lang('quickadmin.qa_no_entries_in_table')</td>
                 </tr>
             @endif
             </tbody>
@@ -124,8 +131,8 @@
     })
 </script>
 <script>
-    @can('blog_delete')
-            @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.blogs.mass_destroy') }}'; @endif
+    @can('folder_delete')
+            @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.folders.mass_destroy') }}'; @endif
     @endcan
 
 </script>
