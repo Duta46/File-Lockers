@@ -30,6 +30,8 @@ return [
 		'title' => 'Folders',
 		'fields' => [
 			'name' => 'Name',
+			'title' => 'Title',
+			'description' => 'Description',
 			'created-by' => 'Created by',
 		],
 	],

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\File;
 use App\Folder;
+use App\Models\Blog;
 use Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;

@@ -4,7 +4,7 @@
 @section('content')
 <h3 class="page-title">@lang('quickadmin.blogs.title')</h3>
 
-@can('blog_create')
+    @can('blog_access')
         <p>
             <a href="{{ route('admin.blogs.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
 

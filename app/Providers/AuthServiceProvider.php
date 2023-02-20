@@ -98,14 +98,31 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1, 2, 3]);
         });
 
-        // Auth gates for: Subscriptions and Payments
-        Gate::define('plan_access', function ($user) {
+        // Auth gates for: Blogs
+        Gate::define('blog_access', function ($user) {
+            return in_array($user->role_id, [1, 2, 3]);
+        });
+        Gate::define('blog_create', function ($user) {
+            return in_array($user->role_id, [1, 2, 3]);
+        });
+        Gate::define('blog_edit', function ($user) {
+            return in_array($user->role_id, [1, 2, 3]);
+        });
+        Gate::define('blog_view', function ($user) {
+            return in_array($user->role_id, [1, 2, 3]);
+        });
+        Gate::define('blog_delete', function ($user) {
             return in_array($user->role_id, [1, 2, 3]);
         });
 
-        Gate::define('payment_access', function ($user) {
-            return in_array($user->role_id, [1, 2, 3]);
-        });
+        // // Auth gates for: Subscriptions and Payments
+        // Gate::define('plan_access', function ($user) {
+        //     return in_array($user->role_id, [1, 2, 3]);
+        // });
+
+        // Gate::define('payment_access', function ($user) {
+        //     return in_array($user->role_id, [1, 2, 3]);
+        // });
 
         //
     }

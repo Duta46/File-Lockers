@@ -81,7 +81,7 @@
             
 
 
-            @can('plan_access')
+            @can('blog_access')
             <li class="{{ $request->segment(2) == 'blogs' ? 'active' : '' }}">
                 <a href="{{ route('admin.blogs.index') }}">
                     <i class="fa-brands fa-blogger-b"></i>

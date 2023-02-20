@@ -8,22 +8,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
-use App\Http\Request\Admin\StoreBlogsRequest;
+use App\Http\Requests\Admin\StoreBlogsRequest;
 use App\Http\Requests\Admin\UpdateBlogsRequest;
-
 use Illuminate\Http\Request as NRequest;
 
 class BlogsController extends Controller
 {
     public function index(){
-        if (!Gate::allows('plan_access')) {
+        if (!Gate::allows('blog_access')) {
             return abort(401);
         }
         if ($filterBy = Request::get('filter')) {
             if ($filterBy == 'all') {
-                Session::put('File.filter', 'all');
+                Session::put('Blog.filter', 'all');
             } elseif ($filterBy == 'my') {
-                Session::put('File.filter', 'my');
+                Session::put('Blog.filter', 'my');
             }
         }
 
@@ -43,65 +42,69 @@ class BlogsController extends Controller
 
     public function create()
     {
+        if (! Gate::allows('blog_access')) {
+            return abort(401);
+        }
+
+        $roleId = Auth::getUser()->role_id;
+        // $userFilesCount = File::where('created_by_id', Auth::getUser()->id)->count();
+        // if ($roleId == 2 && $userFilesCount > 500) {
+        //     return redirect('/admin/blogs');
+        // }
+
+        $folders = \App\Folder::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
+        $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
+
+        return view('admin.blogs.create', compact('folders', 'created_bies', 'roleId'));
+    }
+
+    public function store(StoreBlogsRequest $request)
+    {
         if (! Gate::allows('blog_create')) {
             return abort(401);
         }
-        
-        $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
+        $blog = Blog::create($request->all());
 
-        return view('admin.blogs.create', compact('created_bies'));
-    }
-
-    public function store(StoreFoldersRequest $request)
-    {
-        if (! Gate::allows('folder_create')) {
-            return abort(401);
-        }
-        $folder = Folder::create($request->all());
-
-
-
-        return redirect()->route('admin.folders.index');
+        return redirect()->route('admin.blogs.index');
     }
 
 
     /**
-     * Show the form for editing Folder.
+     * Show the form for editing Blog.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        if (! Gate::allows('folder_edit')) {
+        if (! Gate::allows('blog_edit')) {
             return abort(401);
         }
         
+        $folders = \App\Folder::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
         $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
 
-        $folder = Folder::findOrFail($id);
+        $blog = Blog::findOrFail($id);
 
-        return view('admin.folders.edit', compact('folder', 'created_bies'));
+        return view('admin.blogs.edit', compact('blog', 'folders', 'created_bies'));
     }
 
     /**
-     * Update Folder in storage.
+     * Update Blog in storage.
      *
-     * @param  \App\Http\Requests\UpdateFoldersRequest  $request
+     * @param  \App\Http\Requests\UpdateBlogsRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFoldersRequest $request, $id)
+    public function update(UpdateBlogsRequest $request, $id)
     {
-        if (! Gate::allows('folder_edit')) {
+        if (! Gate::allows('blog_edit')) {
             return abort(401);
         }
-        $folder = Folder::findOrFail($id);
-        $folder->update($request->all());
+        $blog = Blog::findOrFail($id);
+        $blog->update($request->all());
 
-
-
-        return redirect()->route('admin.folders.index');
+        return redirect()->route('admin.blogs.index');
     }
 
 
@@ -127,7 +130,7 @@ class BlogsController extends Controller
 
 
     /**
-     * Remove Folder from storage.
+     * Remove Blog from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
