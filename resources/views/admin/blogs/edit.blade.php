@@ -26,29 +26,17 @@
 
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('title', trans('quickadmin.folders.fields.title').'*', ['class' => 'control-label']) !!}
-                    {!! Form::text('title', old('title'), ['class' => 'form-control', 'placeholder' => 'Enter title', 'required' => '']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('title'))
-                        <p class="help-block">
-                            {{ $errors->first('title') }}
-                        </p>
-                    @endif
-                   
+                    {!! Form::label('title', trans('quickadmin.files.fields.title').'*', ['class' => 'control-label']) !!}
+                    {!! Form::text('title', old('title'), ['class' => 'form-control', 'placeholder' => 'Enter Title', 'required' => '']) !!}
+                    
                 </div>
             </div>
-
+            
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('description', trans('quickadmin.folders.fields.description').'*', ['class' => 'control-label']) !!}
-                    {!! Form::text('description', old('description'), ['class' => 'form-control', 'placeholder' => 'Enter Description', 'required' => '']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('title'))
-                        <p class="help-block">
-                            {{ $errors->first('description') }}
-                        </p>
-                    @endif
-                   
+                    {!! Form::label('description', trans('quickadmin.files.fields.description').'*', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('description', old('description'), ['class' => 'summernote', 'rows' => 3, 'required' => '']) !!}
+                    
                 </div>
             </div>
             

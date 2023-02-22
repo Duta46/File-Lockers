@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Blog;
 use Request;
+use Dompdf\Dompdf;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -63,7 +65,9 @@ class BlogsController extends Controller
         if (! Gate::allows('blog_create')) {
             return abort(401);
         }
-        $blog = Blog::create($request->all());
+      $input = $request->all();
+      $input['description'] = strip_tags($input['description']);
+      $blog = Blog::create($input);
 
         return redirect()->route('admin.blogs.index');
     }
@@ -107,28 +111,6 @@ class BlogsController extends Controller
         return redirect()->route('admin.blogs.index');
     }
 
-
-    /**
-     * Display Folder.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        if (! Gate::allows('folder_view')) {
-            return abort(401);
-        }
-        
-        $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');$files = \App\File::where('folder_id', $id)->get();
-
-        $folder = Folder::findOrFail($id);
-        $userFilesCount = File::where('created_by_id', Auth::getUser()->id)->count();
-
-        return view('admin.folders.show', compact('folder', 'files', 'userFilesCount'));
-    }
-
-
     /**
      * Remove Blog from storage.
      *
@@ -137,13 +119,13 @@ class BlogsController extends Controller
      */
     public function destroy($id)
     {
-        if (! Gate::allows('folder_delete')) {
+        if (! Gate::allows('blog_delete')) {
             return abort(401);
         }
-        $folder = Folder::findOrFail($id);
-        $folder->delete();
+        $blog = Blog::findOrFail($id);
+        $blog->delete();
 
-        return redirect()->route('admin.folders.index');
+        return redirect()->route('admin.blogs.index');
     }
 
     /**
@@ -153,11 +135,11 @@ class BlogsController extends Controller
      */
     public function massDestroy(NRequest $request)
     {
-        if (! Gate::allows('folder_delete')) {
+        if (! Gate::allows('blog_delete')) {
             return abort(401);
         }
         if ($request->input('ids')) {
-            $entries = Folder::whereIn('id', $request->input('ids'))->get();
+            $entries = Blog::whereIn('id', $request->input('ids'))->get();
 
             foreach ($entries as $entry) {
                 $entry->delete();
@@ -174,13 +156,13 @@ class BlogsController extends Controller
      */
     public function restore($id)
     {
-        if (! Gate::allows('folder_delete')) {
+        if (! Gate::allows('blog_delete')) {
             return abort(401);
         }
-        $folder = Folder::onlyTrashed()->findOrFail($id);
-        $folder->restore();
+        $blog = Blog::onlyTrashed()->findOrFail($id);
+        $blog->restore();
 
-        return redirect()->route('admin.folders.index');
+        return redirect()->route('admin.blogs.index');
     }
 
     /**
@@ -191,12 +173,22 @@ class BlogsController extends Controller
      */
     public function perma_del($id)
     {
-        if (! Gate::allows('folder_delete')) {
+        if (! Gate::allows('blog_delete')) {
             return abort(401);
         }
-        $folder = Folder::onlyTrashed()->findOrFail($id);
-        $folder->forceDelete();
+        $blog = Blog::onlyTrashed()->findOrFail($id);
+        $blog->forceDelete();
 
-        return redirect()->route('admin.folders.index');
+        return redirect()->route('admin.blogs.index');
+    }
+
+    public function downloadPDF($id)
+    {
+    // Query data blog dari database
+    $blog = Blog::findOrFail($id);
+
+    $pdf = new Dompdf();
+     $pdf = Pdf::loadView('admin.blogs.download', compact('blog'));
+     return $pdf->stream($blog->title . '.pdf');
     }
 }

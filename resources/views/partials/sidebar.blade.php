@@ -100,7 +100,7 @@
 
             <li>
                 <a href="#logout" onclick="$('#logout').submit();">
-                    <i class="fa fa-arrow-left"></i>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     <span class="title">@lang('quickadmin.qa_logout')</span>
                 </a>
             </li>

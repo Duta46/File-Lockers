@@ -95,6 +95,8 @@
                             </td>
                         @else
                             <td>
+                                <a href="{{ route('admin.blogs.download', ['id' => $blog->id]) }}" class="btn btn-xs btn-success">Download</a>
+
                                 @can('blog_edit')
                                     <a href="{{ route('admin.blogs.edit',[$blog->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
                                 @endcan
