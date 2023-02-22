@@ -49,10 +49,6 @@ class BlogsController extends Controller
         }
 
         $roleId = Auth::getUser()->role_id;
-        // $userFilesCount = File::where('created_by_id', Auth::getUser()->id)->count();
-        // if ($roleId == 2 && $userFilesCount > 500) {
-        //     return redirect('/admin/blogs');
-        // }
 
         $folders = \App\Folder::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
         $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');

@@ -106,69 +106,70 @@
     </tbody>
 </table>
 </div>
+
 <div role="tabpanel" class="tab-pane " id="files">
-<table class="table table-bordered table-striped {{ count($files) > 0 ? 'datatable' : '' }}">
-    <thead>
-        <tr>
-            <th>@lang('quickadmin.files.fields.folder')</th>
+    <table class="table table-bordered table-striped {{ count($files) > 0 ? 'datatable' : '' }}">
+        <thead>
+            <tr>
+                <th>@lang('quickadmin.files.fields.folder')</th>
                         <th>@lang('quickadmin.files.fields.created-by')</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
                         @else
                         <th>&nbsp;</th>
                         @endif
-        </tr>
-    </thead>
+            </tr>
+        </thead>
 
-    <tbody>
-        @if (count($files) > 0)
-            @foreach ($files as $file)
-                <tr data-entry-id="{{ $file->id }}">
-                    <td field-key='folder'>{{ $file->folder->name}}</td>
-                                <td field-key='created_by'>{{ $file->created_by->name}}</td>
-                                <td field-key='filename'>@if($file->filename)<a href="{{ asset(env('UPLOAD_PATH').'/' . $file->filename) }}" target="_blank">Download file</a>@endif</td>
+        <tbody>
+            @if (count($files) > 0)
+                @foreach ($files as $file)
+                    <tr data-entry-id="{{ $file->id }}">
+                        <td field-key='folder'>{{ $file->folder->name}}</td>
+                            <td field-key='created_by'>{{ $file->created_by->name}}</td>
+                            <td field-key='filename'>@if($file->filename)<a href="{{ asset(env('UPLOAD_PATH').'/' . $file->filename) }}" target="_blank">Download file</a>@endif</td>
                                 @if( request('show_deleted') == 1 )
-                                <td>
-                                    @can('delete')
-                                                                        {!! Form::open(array(
-                                        'style' => 'display: inline-block;',
-                                        'method' => 'POST',
-                                        'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-                                        'route' => ['files.restore', $file->id])) !!}
-                                    {!! Form::submit(trans('quickadmin.qa_restore'), array('class' => 'btn btn-xs btn-success')) !!}
-                                    {!! Form::close() !!}
-                                @endcan
-                                    @can('delete')
-                                                                        {!! Form::open(array(
-                                        'style' => 'display: inline-block;',
-                                        'method' => 'DELETE',
-                                        'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-                                        'route' => ['files.perma_del', $file->id])) !!}
-                                    {!! Form::submit(trans('quickadmin.qa_permadel'), array('class' => 'btn btn-xs btn-danger')) !!}
-                                    {!! Form::close() !!}
-                                @endcan
-                                </td>
-                                @else
-                                <td>
-                                    @can('view')
-                                    <a href="{{ route('files.show',[$file->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
-                                    @endcan
-                                    @can('edit')
-                                    <a href="{{ route('files.edit',[$file->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
-                                    @endcan
-                                    @can('delete')
-{!! Form::open(array(
-                                        'style' => 'display: inline-block;',
-                                        'method' => 'DELETE',
-                                        'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-                                        'route' => ['files.destroy', $file->id])) !!}
-                                    {!! Form::submit(trans('quickadmin.qa_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
-                                    {!! Form::close() !!}
-                                    @endcan
-                                </td>
-                                @endif
-                </tr>
-            @endforeach
+                                    <td>
+                                        @can('delete')
+                                            {!! Form::open(array(
+                                                'style' => 'display: inline-block;',
+                                                'method' => 'POST',
+                                                'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                                                'route' => ['files.restore', $file->id])) !!}
+                                            {!! Form::submit(trans('quickadmin.qa_restore'), array('class' => 'btn btn-xs btn-success')) !!}
+                                            {!! Form::close() !!}
+                                        @endcan
+                                        @can('delete')
+                                            {!! Form::open(array(
+                                                'style' => 'display: inline-block;',
+                                                'method' => 'DELETE',
+                                                'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                                                'route' => ['files.perma_del', $file->id])) !!}
+                                            {!! Form::submit(trans('quickadmin.qa_permadel'), array('class' => 'btn btn-xs btn-danger')) !!}
+                                            {!! Form::close() !!}
+                                        @endcan
+                                    </td>
+                                        @else
+                                            <td>
+                                                @can('view')
+                                                    <a href="{{ route('files.show',[$file->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
+                                                @endcan
+                                                @can('edit')
+                                                    <a href="{{ route('files.edit',[$file->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
+                                                @endcan
+                                                @can('delete')
+                                                    {!! Form::open(array(
+                                                            'style' => 'display: inline-block;',
+                                                            'method' => 'DELETE',
+                                                            'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                                                            'route' => ['files.destroy', $file->id])) !!}
+                                                    {!! Form::submit(trans('quickadmin.qa_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
+                                                    {!! Form::close() !!}
+                                                @endcan
+                                            </td>
+                                        @endif
+                            </tr>
+                        @endforeach
         @else
             <tr>
                 <td colspan="9">@lang('quickadmin.qa_no_entries_in_table')</td>
