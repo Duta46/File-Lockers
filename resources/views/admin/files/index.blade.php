@@ -78,13 +78,13 @@
                             <td field-key='folder'>{{ $file->folder->name }}</td>
                             @if( request('show_deleted') == 1 )
                                 <td>
-                                    @if (Auth::getUser()->role_id == 2 && $userFilesCount >= 5)
+                                    @if (Auth::getUser()->role_id == 2 && $userFilesCount >= 500)
                                         @can('file_delete')
                                             {!! Form::open(array(
-            'style' => 'display: inline-block;',
-            'method' => 'DELETE',
-            'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-            'route' => ['admin.files.perma_del', $file->id])) !!}
+                                                    'style' => 'display: inline-block;',
+                                                    'method' => 'DELETE',
+                                                    'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                                                    'route' => ['admin.files.perma_del', $file->id])) !!}
                                             {!! Form::submit(trans('quickadmin.qa_permadel'), array('class' => 'btn btn-xs btn-danger')) !!}
                                             {!! Form::close() !!}
                                         @endcan
@@ -100,10 +100,10 @@
                                     @endcan
                                     @can('file_delete')
                                         {!! Form::open(array(
-                                                    'style' => 'display: inline-block;',
-                                                    'method' => 'DELETE',
-                                                    'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-                                                    'route' => ['admin.files.perma_del', $file->id])) !!}
+                                                                'style' => 'display: inline-block;',
+                                                                'method' => 'DELETE',
+                                                                'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                                                                'route' => ['admin.files.perma_del', $file->id])) !!}
                                         {!! Form::submit(trans('quickadmin.qa_permadel'), array('class' => 'btn btn-xs btn-danger')) !!}
                                         {!! Form::close() !!}
                                     @endcan
@@ -135,8 +135,6 @@
             </table>
         </div>
     </div>
-
-
 
 @stop
 

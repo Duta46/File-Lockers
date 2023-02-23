@@ -37,9 +37,9 @@ class BlogsController extends Controller
             $blogs = Blog::all();
         }
         $user = Auth::getUser();
-        $userFilesCount = Blog::where('created_by_id', $user->id)->count();
+        $userBlogsCount = Blog::where('created_by_id', $user->id)->count();
 
-        return view('admin.blogs.index', compact('blogs', 'userFilesCount'));
+        return view('admin.blogs.index', compact('blogs', 'userBlogsCount'));
     }
 
     public function create()

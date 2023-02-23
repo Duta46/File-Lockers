@@ -89,7 +89,7 @@
                 var Id = '<?php echo $roleId; ?>';
                 var roleId = Number(Id);
                 console.log(roleId);
-console.log(totalCount);
+            console.log(totalCount);
                 if (totalCount > 500 && roleId == 2) {
                     // alert("your upload limit is 5 files." +
                     //         "Upgrade to Premium and upload as many files you want");

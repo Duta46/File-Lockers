@@ -14,19 +14,19 @@
                     <table class="table table-bordered table-striped">
                         <tr>
                             <th>@lang('quickadmin.blogs.fields.folder')</th>
-                            <td field-key='folder'>{{ $file->folder->name }}</td>
+                            <td field-key='folder'>{{ $blog->folder->name }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.blogs.fields.title')</th>
-                            <td field-key='title'>{{ $file->title->name}}</td>
+                            <td field-key='title'>{{ $blog->title->name}}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.blogs.fields.description')</th>
-                            <td field-key='description'>{{ $file->description->name}}</td>
+                            <td field-key='description'>{{ $blog->description->name}}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.blogs.fields.created-by')</th>
-                            <td field-key='created_by'>{{ $file->created_by->name }}</td>
+                            <td field-key='created_by'>{{ $blog->created_by->name }}</td>
                         </tr>
                     </table>
                 </div>

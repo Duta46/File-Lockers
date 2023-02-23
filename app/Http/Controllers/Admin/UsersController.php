@@ -115,11 +115,14 @@ class UsersController extends Controller
             return abort(401);
         }
         
-        $roles = \App\Role::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');$folders = \App\Folder::where('created_by_id', $id)->get();$files = \App\File::where('created_by_id', $id)->get();
+        $roles = \App\Role::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
+        $folders = \App\Folder::where('created_by_id', $id)->get();
+        $files = \App\File::where('created_by_id', $id)->get();
+        $blogs = \App\Models\Blog::where('created_by_id', $id)->get();
 
         $user = User::findOrFail($id);
 
-        return view('admin.users.show', compact('user', 'folders', 'files'));
+        return view('admin.users.show', compact('user', 'folders', 'files', 'blogs'));
     }
 
 
