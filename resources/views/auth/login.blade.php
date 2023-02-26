@@ -11,7 +11,7 @@
             <div class="panel-body">
                 @if (count($errors) > 0)
                 <div class="alert alert-danger">
-                    <strong>Email atau Password yang anda masukkan salah. Silahkan coba lagi</strong>
+                    <strong>Email atau Password yang anda masukkan salah</strong>
                     {{-- <strong>Whoops!</strong> @lang('quickadmin.qa_there_were_problems_with_input'):
                     <br><br>
                     <ul>
