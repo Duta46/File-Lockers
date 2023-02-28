@@ -3,9 +3,9 @@
 @section('content')
 <div class="row h-100 w-100" style="justify-content:center;display:flex" id="login-box">
     <div class="gambar">
-        <img src="{{ asset('image/Vokasi-Unesa.png') }}" width="300px" height="200px" alt="">
+        <img src="{{ asset('image/Vokasi-Unesa.png') }}" width="300px" height="200px" alt="" style="margin-bottom: 2px">
     </div>
-    <div class="card col-md-5">
+    <div class="card col-md-5" style="margin-bottom: 150px;">
         <div class="panel panel-default">
             <div class="panel-heading">{{ ucfirst(config('app.name')) }} @lang('quickadmin.qa_login')</div>
             <div class="panel-body">
@@ -98,8 +98,14 @@
                                     <h3 class="modal-title" id="exampleModalLabel">Contact Admin</h3>
                                 </div>
                                 <div class="modal-body">
-                                    Hubungi Admin 089539333737
+                                    <p>Silahkan hubungi admin 0822-3663-0205 atau bisa juga dengan klik tombol Whatsapp</p>
                                 </div>
+                                <div class="modal-footer">
+                                    <a href="https://api.whatsapp.com/send?phone=082236630205" target="_blank" class="btn-success"><button type="button" class="btn btn-success">
+                                        <i class="fa-brands fa-whatsapp"></i> Chat with us on WhatsApp
+                                      </button></a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  </div>
                             </div>
                         </div>
                     </div>
