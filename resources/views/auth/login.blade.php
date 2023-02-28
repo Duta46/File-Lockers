@@ -101,7 +101,7 @@
                                     <p>Silahkan hubungi admin 0822-3663-0205 atau bisa juga dengan klik tombol Whatsapp</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="https://api.whatsapp.com/send?phone=082236630205" target="_blank" class="btn-success"><button type="button" class="btn btn-success">
+                                    <a href="https://api.whatsapp.com/send?phone=6282236630205" target="_blank" class="btn-success"><button type="button" class="btn btn-success">
                                         <i class="fa-brands fa-whatsapp"></i> Chat with us on WhatsApp
                                       </button></a>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
