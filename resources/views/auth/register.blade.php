@@ -8,7 +8,7 @@
         <div class="row w-100" style="justify-content:center;display:flex">
             <div class=" card col-md-5">
                 <div class="panel panel-default">
-                    <div class="panel-heading"> {{ ucfirst(config('app.name')) }} @lang('quickadmin.qa_register')</div>
+                    <div class="panel-heading">@lang('quickadmin.qa_register')</div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                             {{ csrf_field() }}

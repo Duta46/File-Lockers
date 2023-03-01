@@ -7,7 +7,7 @@
     </div>
     <div class="card col-md-5" style="margin-bottom: 150px;">
         <div class="panel panel-default">
-            <div class="panel-heading">{{ ucfirst(config('app.name')) }} @lang('quickadmin.qa_login')</div>
+            <div class="panel-heading">@lang('quickadmin.qa_login')</div>
             <div class="panel-body">
                 @if (count($errors) > 0)
                 <div class="alert alert-danger">
