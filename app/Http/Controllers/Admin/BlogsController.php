@@ -61,9 +61,9 @@ class BlogsController extends Controller
         if (! Gate::allows('blog_create')) {
             return abort(401);
         }
-      $input = $request->all();
-      $input['description'] = strip_tags($input['description']);
-      $blog = Blog::create($input);
+      $blog = $request->all();
+      $blog['description'] = strip_tags($blog['description']);
+      $blog = Blog::create($blog);
 
         return redirect()->route('admin.blogs.index');
     }
@@ -102,6 +102,7 @@ class BlogsController extends Controller
             return abort(401);
         }
         $blog = Blog::findOrFail($id);
+        $blog['description'] = strip_tags($blog['description']);
         $blog->update($request->all());
 
         return redirect()->route('admin.blogs.index');

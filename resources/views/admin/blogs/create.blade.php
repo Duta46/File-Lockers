@@ -2,7 +2,7 @@
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.blogs.title')</h3>
-    {!! Form::open(['method' => 'POST', 'route' => ['admin.blogs.store'], 'blogs' => true,]) !!}
+    {!! Form::open($blog, ['method' => 'POST', 'route' => ['admin.blogs.store'], 'blogs' => true,]) !!}
 
     <div class="panel panel-default">
         <div class="panel-heading">
