@@ -62,7 +62,6 @@ class BlogsController extends Controller
             return abort(401);
         }
       $blog = $request->all();
-      $blog['description'] = strip_tags($blog['description']);
       $blog = Blog::create($blog);
 
         return redirect()->route('admin.blogs.index');

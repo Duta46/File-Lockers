@@ -65,7 +65,7 @@
                                     <td></td>@endif
                             @endcan
                             <td field-key='title'>{{ $blog->title }}</td>
-                            <td field-key='description'>{!! $blog->description !!}</td>
+                            <td field-key='description'>{!!  $blog->description  !!}</td>
                             {{-- <td field-key='filename'> @foreach($file->getMedia('filename') as $media)
                                     <p class="form-group">
                                         <a href="{{url('/admin/' . $file->uuid . '/download')}}" target="_blank">{{ $media->name }} ({{ $media->size }} KB)</a>
